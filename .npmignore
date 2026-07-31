@@ -1,0 +1,96 @@
+# Source code (compiled lib/ is published instead)
+src/
+
+# Example app (not needed by consumers)
+example/
+
+# Internal agent skills/config
+.agents/
+
+# Development & build config files
+tsconfig.json
+babel.config.js
+metro.config.js
+jest.config.js
+.eslintrc*
+.prettierrc*
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+.circleci/
+
+# Logs & debug
+*.log
+*.hprof
+*.hprof.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Test coverage
+coverage/
+__tests__/
+*.test.ts
+*.spec.ts
+
+# Lock files (not needed in published package)
+package-lock.json
+yarn.lock
+
+# Android build artifacts — exclude from npm package
+android/.gradle/
+android/build/
+android/**/.gradle/
+android/**/build/
+
+# iOS build artifacts
+ios/build/
+ios/Pods/
+
+# Development & build config files
+tsconfig.json
+babel.config.js
+metro.config.js
+jest.config.js
+.eslintrc*
+.prettierrc*
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+.circleci/
+
+# Logs & debug
+*.log
+*.hprof
+*.hprof.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Test coverage
+coverage/
+__tests__/
+*.test.ts
+*.spec.ts
+
+# Lock files (not needed in published package)
+package-lock.json
+yarn.lock
