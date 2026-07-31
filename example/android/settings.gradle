@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'RNNOSExample'
+include ':app'
+include ':react-native-notification-os'
+project(':react-native-notification-os').projectDir = new File(rootProject.projectDir, '../../android')

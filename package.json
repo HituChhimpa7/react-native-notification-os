@@ -1,0 +1,70 @@
+{
+  "name": "react-native-notification-os",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Notification Operating System for React Native apps built on the New Architecture",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "rnnos.podspec",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "keywords": [
+    "react-native",
+    "notifications",
+    "fcm",
+    "apns",
+    "push-notifications",
+    "messaging-style",
+    "chat-notifications",
+    "order-tracking",
+    "live-activities",
+    "ios-notifications",
+    "android-notifications",
+    "turbomodule",
+    "jsi",
+    "fabric"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.73.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": false },
+    "react-native": { "optional": false }
+  },
+  "devDependencies": {
+    "@react-native-community/cli": "^20.2.0",
+    "@react-native/metro-config": "^0.86.2",
+    "@types/jest": "^29.5.12",
+    "@types/react": "^18.3.0",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.3.3"
+  },
+  "codegenConfig": {
+    "name": "RNNOSTurboModuleSpec",
+    "type": "modules",
+    "jsSrcsDir": "src/native",
+    "android": {
+      "javaPackageName": "com.rnnos"
+    }
+  }
+}

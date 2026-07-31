@@ -1,0 +1,76 @@
+buildscript {
+    ext.safeExtGet = { prop, fallback ->
+        rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion', '1.9.0')}"
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    namespace 'com.rnnos'
+    compileSdkVersion safeExtGet('compileSdkVersion', 35)
+
+    defaultConfig {
+        minSdkVersion safeExtGet('minSdkVersion', 23)
+        targetSdkVersion safeExtGet('targetSdkVersion', 35)
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    // ─── React Native: compileOnly so host app's version is used ────────────
+    // Works with RN 0.73.x, 0.74.x, 0.75.x, 0.76.x, 0.77.x, 0.78.x, 0.79.x, 0.80.x+
+    compileOnly "com.facebook.react:react-android"
+    compileOnly "com.facebook.react:hermes-android"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${safeExtGet('kotlinVersion', '1.9.0')}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+
+    // AndroidX & Jetpack Libraries
+    implementation "androidx.core:core-ktx:1.13.0"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.work:work-runtime-ktx:2.9.1"
+
+    // Room Database
+    implementation "androidx.room:room-runtime:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
+
+    // Firebase Messaging
+    implementation "com.google.firebase:firebase-messaging:24.0.0"
+}
