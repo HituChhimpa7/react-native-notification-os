@@ -1,6 +1,11 @@
 # Source code (compiled lib/ is published instead)
 src/
 
+# Source maps (not needed by consumers)
+lib/**/*.map
+lib/**/*.js.map
+lib/**/*.d.ts.map
+
 # Example app (not needed by consumers)
 example/
 

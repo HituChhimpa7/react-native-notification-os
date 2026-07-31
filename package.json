@@ -17,8 +17,10 @@
   },
   "files": [
     "lib",
-    "android",
-    "ios",
+    "android/src",
+    "android/build.gradle",
+    "android/consumer-rules.pro",
+    "ios/Sources",
     "rnnos.podspec",
     "README.md",
     "LICENSE"
