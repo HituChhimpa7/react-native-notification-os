@@ -612,4 +612,4 @@ RNNOS.setNavigationHandler((deepLink, data) => {
 
 ## 📄 License
 
-MIT © [Apptunix](https://github.com/apptunix)
+MIT © [Hitesh Chhimpa](https://github.com/HituChhimpa7)

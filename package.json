@@ -38,7 +38,7 @@
     "jsi",
     "fabric"
   ],
-  "author": "Antigravity Engineering",
+  "author": "Hitesh Chhimpa <hituchhimpa7@gmail.com> (https://github.com/HituChhimpa7)",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.0.0"
