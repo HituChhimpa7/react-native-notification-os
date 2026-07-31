@@ -20,7 +20,56 @@
 
 ---
 
+## 🧪 Example App
+
+A fully working demo app is included in the `example/` folder showcasing all features — Chat notifications with inline replies, Live Order tracking banners, FCM token inspector, and permission handling.
+
+### Run Example on Android
+
+```bash
+# Step 1: Clone the repo
+git clone https://github.com/HituChhimpa7/react-native-notification-os.git
+cd react-native-notification-os
+
+# Step 2: Install root dependencies (builds the library)
+npm install
+
+# Step 3: Install example dependencies
+cd example
+npm install
+
+# Step 4 (Optional): Add google-services.json for Firebase push testing
+# Place your google-services.json inside example/android/app/
+
+# Step 5: Run on Android
+npx react-native run-android
+```
+
+### Run Example on iOS
+
+```bash
+# Step 1-3: Same as above, then:
+cd example/ios && pod install && cd ..
+
+# Step 4 (Optional): Add GoogleService-Info.plist to Xcode project
+
+# Step 5: Run on iOS
+npx react-native run-ios
+```
+
+### Example App Features
+
+| Tab | What It Demos |
+| :--- | :--- |
+| **💬 Chat** | Persistent inline reply, multi-message thread, Mark Read action |
+| **🛵 Order** | Live order progress bar, ETA badge, status updates |
+| **🖼️ Image** | Media/rich notification |
+| **🔍 Debug** | FCM Device Token display, permission status check |
+
+---
+
 ## 📦 Installation
+
 
 ```bash
 # npm
