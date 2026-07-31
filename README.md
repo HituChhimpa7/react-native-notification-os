@@ -332,33 +332,33 @@ curl -X POST https://fcm.googleapis.com/fcm/send \
 
 ## 📱 App State Behavior
 
-> FCM has 3 payload types. How RNNOS handles each depends on the app state:
+RNNOS overrides `handleIntent()` — FCM's internal entry point — to intercept **all payload types** before the system gets a chance to show its own generic banner:
 
-### Payload Type 1: `data` only ✅ (Recommended for full RNNOS control)
-
-| App State | What Happens |
-| :--- | :--- |
-| **Foreground** | `RNNOSMessagingService.onMessageReceived()` called → RNNOS custom banner + JS event |
-| **Background** | `RNNOSMessagingService.onMessageReceived()` called → RNNOS custom banner |
-| **Killed** | `RNNOSMessagingService.onMessageReceived()` called → RNNOS custom banner |
-
-### Payload Type 2: `notification` only (Firebase Console Web GUI)
+### Payload Type 1: `data` only ✅
 
 | App State | What Happens |
 | :--- | :--- |
-| **Foreground** | `onMessageReceived()` called → RNNOS renders banner |
-| **Background** | 🤖 Android System auto-shows banner (generic, using `rnnos_default_channel`) |
-| **Killed** | 🤖 Android System auto-shows banner (generic, using `rnnos_default_channel`) |
+| **Foreground** | `onMessageReceived()` → RNNOS custom banner + JS event |
+| **Background** | `onMessageReceived()` → RNNOS custom banner |
+| **Killed** | `onMessageReceived()` → RNNOS custom banner |
 
-### Payload Type 3: `notification` + `data` both keys
+### Payload Type 2: `notification` only ✅
 
 | App State | What Happens |
 | :--- | :--- |
-| **Foreground** | `onMessageReceived()` called → `data` priority, `notification.title/body` used as fallback → RNNOS banner |
-| **Background** | 🤖 Android System intercepts → auto-shows banner (ignores RNNOS custom logic) |
-| **Killed** | 🤖 Android System intercepts → auto-shows banner (ignores RNNOS custom logic) |
+| **Foreground** | `handleIntent()` intercepts → RNNOS custom banner + JS event |
+| **Background** | `handleIntent()` intercepts → system banner suppressed → RNNOS custom banner |
+| **Killed** | `handleIntent()` intercepts → system banner suppressed → RNNOS custom banner |
 
-> **⚠️ Important**: When payload has both `notification` + `data` keys, Android system **always** shows its own banner in Background/Killed state — RNNOS's `onMessageReceived()` is **not called** by FCM in these states. To get RNNOS custom banners in all states, always use **`data`-only payloads** from your backend.
+### Payload Type 3: `notification` + `data` both keys ✅
+
+| App State | What Happens |
+| :--- | :--- |
+| **Foreground** | `handleIntent()` intercepts → `data` priority, `notification.title/body` as fallback → RNNOS banner |
+| **Background** | `handleIntent()` intercepts → system banner suppressed → RNNOS custom banner |
+| **Killed** | `handleIntent()` intercepts → system banner suppressed → RNNOS custom banner |
+
+> **✅ All 3 payload types work in all 3 app states.** No backend changes needed — RNNOS handles everything.
 
 ---
 
